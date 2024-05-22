@@ -1,0 +1,1 @@
+[2024-05-22 15:47:38,612] INFO [NodeToControllerChannelManager id=102 name=forwarding] Node 101 disconnected. (org.apache.kafka.clients.NetworkClient)

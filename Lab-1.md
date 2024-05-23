@@ -94,3 +94,30 @@ ceate tppic with 3 partitions & 3 replicas
 ```bash
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic1 --partitions 3 --replication-factor 3
 ```
+
+---
+
+Consumer Group Management
+-------------------------
+
+```bash
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+```
+
+```bash
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group group1
+```
+
+```bash
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumer-group-3 --reset-offsets --to-earliest --execute --topic topic1
+```
+
+```bash
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumer-group-3 --reset-offsets --to-latest --execute --topic topic1
+```
+
+```bash
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumer-group-3 --reset-offsets --shift-by -100 --execute --topic topic1
+```
+
+---

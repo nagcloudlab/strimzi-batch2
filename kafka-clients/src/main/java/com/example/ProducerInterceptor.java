@@ -5,17 +5,17 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.Map;
 
-public class CustomProducerInterceptor implements org.apache.kafka.clients.producer.ProducerInterceptor<String, String> {
+public class ProducerInterceptor implements org.apache.kafka.clients.producer.ProducerInterceptor<String, String> {
 
     @Override
     public ProducerRecord<String, String> onSend(ProducerRecord<String, String> record) {
-        //....
+        // ....
         return record;
     }
 
     @Override
     public void onAcknowledgement(RecordMetadata metadata, Exception exception) {
-        //...
+        // ...
     }
 
     @Override

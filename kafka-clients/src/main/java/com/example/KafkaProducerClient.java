@@ -24,7 +24,7 @@ public class KafkaProducerClient {
                 "ny", "st", "tn", "ss", "ve", "af", "nr", "sw", "rw", "lg", "mg", "sn", "so");
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             String key = languages.get(i % languages.size());
-            String value = "Hey Kafka!".repeat(100); // 1kb message
+            String value = "Hey Kafka!".repeat(100); // 1kb sized message
             ProducerRecord<String, String> record = new ProducerRecord<>("topic1", key, value);
             producer.send(record, (recordMetadata, exception) -> {
                 if (exception == null) {
@@ -82,7 +82,7 @@ public class KafkaProducerClient {
         // CustomPartitioner.class.getName());
         // Interceptor classes
         // props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
-        // CustomProducerInterceptor.class.getName());
+        // ProducerInterceptor.class.getName());
         // Producer
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         return producer;

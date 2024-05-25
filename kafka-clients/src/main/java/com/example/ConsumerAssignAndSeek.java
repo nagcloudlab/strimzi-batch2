@@ -1,4 +1,4 @@
-package com.example.basics;
+package com.example;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -41,7 +41,6 @@ public class ConsumerAssignAndSeek {
         int numberOfMessagesToRead = 3;
         boolean keepOnReading = true;
         int numberOfMessagesReadSoFar = 0;
-
 
         while (keepOnReading) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));

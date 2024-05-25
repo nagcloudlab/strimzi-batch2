@@ -2,22 +2,26 @@ package com.example;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class KafkaProducerClient {
     private static final Logger logger = LoggerFactory.getLogger(KafkaProducerClient.class);
+
     public static void main(String[] args) throws InterruptedException {
         KafkaProducer<String, String> producer = getKafkaProducer();
-        List<String> languages = List.of("en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh", "ar", "hi", "bn", "pa", "te", "mr", "ta", "ur", "gu", "kn", "ml", "sd", "ne", "si", "ps", "my", "am", "ceb", "jv", "ha", "yo", "uz", "mg", "so", "sn", "rw", "ku", "km", "lo", "bg", "uk", "pl", "ro", "nl", "el", "hu", "sv", "da", "fi", "sk", "cs", "et", "lt", "lv", "sl", "hr", "sr", "sq", "mk", "bs", "mt", "is", "ga", "cy", "eu", "gl", "ast", "ca", "ht", "tl", "xh", "zu", "ny", "st", "tn", "ss", "ve", "af", "nr", "xh", "zu", "ny", "st", "tn", "ss", "ve", "af", "nr", "sw", "rw", "lg", "mg", "sn", "so");
+        List<String> languages = List.of("en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh", "ar", "hi", "bn",
+                "pa", "te", "mr", "ta", "ur", "gu", "kn", "ml", "sd", "ne", "si", "ps", "my", "am", "ceb", "jv", "ha",
+                "yo", "uz", "mg", "so", "sn", "rw", "ku", "km", "lo", "bg", "uk", "pl", "ro", "nl", "el", "hu", "sv",
+                "da", "fi", "sk", "cs", "et", "lt", "lv", "sl", "hr", "sr", "sq", "mk", "bs", "mt", "is", "ga", "cy",
+                "eu", "gl", "ast", "ca", "ht", "tl", "xh", "zu", "ny", "st", "tn", "ss", "ve", "af", "nr", "xh", "zu",
+                "ny", "st", "tn", "ss", "ve", "af", "nr", "sw", "rw", "lg", "mg", "sn", "so");
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             String key = languages.get(i % languages.size());
             String value = "Hey Kafka!".repeat(100); // 1kb message
@@ -74,9 +78,11 @@ public class KafkaProducerClient {
         // Delivery timeout settings
         props.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 120000);
         // Partitioner class
-        //props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitioner.class.getName());
+        // props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG,
+        // CustomPartitioner.class.getName());
         // Interceptor classes
-        //props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, CustomProducerInterceptor.class.getName());
+        // props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,
+        // CustomProducerInterceptor.class.getName());
         // Producer
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         return producer;

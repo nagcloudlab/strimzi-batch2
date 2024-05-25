@@ -2,3 +2,6 @@ kafka:
   clusters:
     - name: local
       bootstrapServers: localhost:9092,localhost:9093
+      kafkaConnect:
+      - name: first
+        address: http://localhost:8083

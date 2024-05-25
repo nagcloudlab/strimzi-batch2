@@ -1,0 +1,18 @@
+{
+    "name": "cassandra-sink-connector",
+    "config": {
+        "connector.class": "com.datastax.oss.kafka.sink.CassandraSinkConnector",
+        "tasks.max": "1",
+        "topics": "my_topic",
+        "contactPoints": "localhost",
+        "loadBalancing.localDc": "datacenter1",
+        "queryExecutionTimeout": "30",
+        "keyspace": "my_keyspace",
+        "table.name": "users",
+        "topic.my_topic.my_keyspace.users.mapping": "id=value.id, email=value.email, name=value.name",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false",
+        "auth.username": "cassandra",
+        "auth.password": "cassandra"
+    }
+}

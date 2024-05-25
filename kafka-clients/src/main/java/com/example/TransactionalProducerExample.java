@@ -1,4 +1,5 @@
 package com.example;
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -33,8 +34,10 @@ public class TransactionalProducerExample {
                 producer.send(new ProducerRecord<>("topic1", "key2", "value2"));
 
                 TimeUnit.SECONDS.sleep(5); // Simulate a delay
-                if(true) throw new RuntimeException("Simulated error"); // Simulate an error
-//
+                boolean error = true;
+                if (error)
+                    throw new RuntimeException("Simulated error"); // Simulate an error
+                //
                 // Commit the transaction
                 producer.commitTransaction();
 

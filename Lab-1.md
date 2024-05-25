@@ -1,10 +1,9 @@
 
-
-
-1 zookeeper & 3 broker cluster setup
+-------------------------------------
+kafka cluster setup
 -------------------------------------
 
-1. verify java version
+1. verify java installation 
 ```bash
 java -version
 ```
@@ -39,8 +38,6 @@ cd kafka-ui
 wget https://github.com/provectus/kafka-ui/releases/download/v0.7.2/kafka-ui-api-v0.7.2.jar
 touch application.yml
 ```
-
-
 ```yaml
 kafka:
   clusters:
@@ -53,11 +50,9 @@ java -Dspring.config.additional-location=application.yml --add-opens java.rmi/ja
 ```
 
 
-
-topic management with cluster
------------------------------
-
-option-1: admin-scripts
+-------------------------------------
+Topic management 
+-------------------------------------
 
 list topics
 ```bash
@@ -85,9 +80,6 @@ delete topic
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic topic1
 ```
 
-option-2: kafka-ui
-
----
 
 ceate tppic with 3 partitions & 3 replicas
 
@@ -95,10 +87,9 @@ ceate tppic with 3 partitions & 3 replicas
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic1 --partitions 3 --replication-factor 3
 ```
 
----
-
-Consumer Group Management
--------------------------
+-------------------------------------
+ConsumerGroup Management
+-------------------------------------
 
 ```bash
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list

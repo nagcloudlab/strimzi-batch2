@@ -207,7 +207,7 @@ ssl.truststore.password=broker-1
 
 
 -----------------------------------------------------
-Security : mutual authentication (mTLS)
+Security : mutual authentication (mTLS) 
 -----------------------------------------------------
 
 
@@ -223,9 +223,11 @@ listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL
 ssl.keystore.location=/home/centos/kafka_2.13-3.7.0/kafka.broker-1.keystore.jks
 ssl.keystore.password=broker-1
 ssl.key.password=broker-1
+
+ssl.client.auth=required
 ssl.truststore.location=/home/centos/kafka_2.13-3.7.0/kafka.broker-1.truststore.jks
 ssl.truststore.password=broker-1
-ssl.client.auth=required
+
 ```
 
 kafka-client properties
@@ -320,7 +322,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 -----------------------------------------------------
-Security : SASL_SSL
+Security : SASL_SSL ( recommended )
 -----------------------------------------------------
 
 broker-1 server.properties

@@ -90,7 +90,17 @@ public class KafkaConsumerClient {
         Properties props = new Properties();
 
         // to get metadata
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9093");
+
+        props.put("security.protocol", "SSL");
+        props.setProperty("ssl.protocol", "TLSv1.2");
+        props.put("ssl.truststore.location",
+                "/home/nag/strimzi-batch2/security-1/kafka.client.truststore.jks");
+        props.put("ssl.truststore.password", "changeit");
+//
+        props.put("ssl.keystore.location",
+                "/home/nag/strimzi-batch2/security-1/kafka.client.keystore.jks");
+        props.put("ssl.keystore.password", "changeit");
 
         // Unique string that identifies the consumer group this consumer belongs to
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-group-1");

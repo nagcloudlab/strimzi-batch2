@@ -38,7 +38,7 @@ public class KafkaProducerClient {
                     logger.error("Error while producing: {}", exception.getMessage());
                 }
             });
-            TimeUnit.MILLISECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(1);
         }
         producer.close();
 
@@ -50,25 +50,25 @@ public class KafkaProducerClient {
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "producer-client-1");
 
         // List of Kafka brokers to get metadata
-//        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 
-         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
-         "strimzi.nagcloudlab.com:443");
-
-         props.put("security.protocol", "SSL");
+//         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+//         "strimzi.nagcloudlab.com:443");
+//
+//         props.put("security.protocol", "SSL");
 //         props.setProperty("ssl.protocol", "TLSv1.2");
-         props.put("ssl.truststore.location",
-         "/home/nag/strimzi-batch2/security-2/kafka-truststore.jks");
-         props.put("ssl.truststore.password", "changeit");
+//         props.put("ssl.truststore.location",
+//         "/home/nag/strimzi-batch2/security-1/kafka.client.truststore.jks");
+//         props.put("ssl.truststore.password", "changeit");
+////
+//         props.put("ssl.keystore.location",
+//         "/home/nag/strimzi-batch2/security-1/kafka.client.keystore.jks");
+//         props.put("ssl.keystore.password", "changeit");
 
-         props.put("ssl.keystore.location",
-         "/home/nag/strimzi-batch2/security-2/kafka-keystore.jks");
-         props.put("ssl.keystore.password", "changeit");
 
-
-//        props.put("security.protocol", "SASL_PLAINTEXT");
-//        props.put("sasl.mechanism","PLAIN");
-//        props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";");
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("sasl.mechanism","PLAIN");
+        props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";");
 
 
 

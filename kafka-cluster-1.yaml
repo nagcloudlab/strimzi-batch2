@@ -1,0 +1,96 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: pool-a
+  labels:
+    strimzi.io/cluster: my-cluster
+spec:
+  replicas: 3
+  roles:
+    - broker
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: persistent-claim
+        size: 10Gi
+        deleteClaim: true
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: my-cluster
+  annotations:
+    strimzi.io/node-pools: enabled
+spec:
+  kafka:
+    version: 3.7.0
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+      - name: tlsingress
+        port: 9094
+        type: ingress
+        tls: true
+        configuration:
+          bootstrap:
+            host: strimzi.nagcloudlab.com
+          brokers:
+            - broker: 0
+              host: strimzi-0.nagcloudlab.com
+            - broker: 1
+              host: strimzi-1.nagcloudlab.com
+            - broker: 2
+              host: strimzi-2.nagcloudlab.com
+          class: nginx
+          # brokerCertChainAndKey:
+          #   secretName: my-cluster-lets-encrypt
+          #   certificate: tls.crt
+          #   key: tls.key
+    rack:
+      topologyKey: topology.kubernetes.io/zone
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      default.replication.factor: 3
+      min.insync.replicas: 2
+      inter.broker.protocol.version: "3.7"
+    resources:
+      requests:
+        cpu: 1
+        memory: 1Gi
+      limits:
+        cpu: 2
+        memory: 2Gi
+    jvmOptions:
+      -Xmx: "1G"
+      -Xms: "1G"
+    template:
+      pod:
+        tolerations:
+          - key: "dedicated"
+            operator: "Equal"
+            value: "Kafka"
+            effect: "NoSchedule"
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: dedicated
+                      operator: In
+                      values:
+                        - Kafka
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 1Gi
+      deleteClaim: true

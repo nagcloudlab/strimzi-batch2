@@ -1,0 +1,44 @@
+
+
+Performance tunining factors for kafka platform
+--------------------------------------------------
+
+ - throughput
+ - latency
+ - durability
+ - availability
+
+
+ e.g Producer Client
+ --------------------
+
+    # throughput
+
+     - batch size
+     - linger time
+     - compression
+     - acks
+     - max.in.flight.requests.per.connection
+
+    # latency
+
+    - batch size
+    - linger time
+    - compression
+    - acks
+    - max.in.flight.requests.per.connection
+    
+    # durability
+
+    - acks
+    - replication factor
+    - min.insync.replicas
+
+    # availability
+
+    - request timeout
+    - retries
+
+----------------------------------------------    
+
+

@@ -27,14 +27,11 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          size: 100Gi
-          deleteClaim: false
+          size: 1Gi
+          deleteClaim: true
   zookeeper:
     replicas: 1
     storage:
       type: persistent-claim
-      size: 100Gi
-      deleteClaim: false
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
+      size: 1Gi
+      deleteClaim: true

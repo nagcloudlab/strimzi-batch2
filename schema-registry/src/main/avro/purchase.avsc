@@ -11,6 +11,14 @@
 			}
 		},
 		{
+			"name": "qty",
+			"type": {
+				"type": "string",
+				"avro.java.string": "String"
+			},
+			"default": "1"
+		},
+		{
 			"name": "total_cost",
 			"type": "double"
 		},

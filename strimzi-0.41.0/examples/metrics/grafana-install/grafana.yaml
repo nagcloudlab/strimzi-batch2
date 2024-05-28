@@ -61,4 +61,4 @@ spec:
       protocol: TCP
   selector:
     name: grafana
-  type: LoadBalancer
+  type: ClusterIP

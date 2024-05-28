@@ -1,0 +1,42 @@
+
+
+
+How to decide # of broker for kafka cluster ?
+
+1. throughput requirement
+
+    a. data volume
+    b. prooducer throughput
+
+2. consumer parallelism
+
+    a. consumer group size
+    b. processing time
+
+3. fault tolerance
+
+    a. replication factor
+    b. broker failure        
+
+4. resource requirement
+
+    a. disk space
+    b. memory
+    c. cpu
+
+5. message size & frequency  ( Capacity Planning)
+
+    a. message size
+    b. message frequency
+
+-------------------------------
+
+Assume you have:
+
+A desired throughput of 1 GB per second.
+Each broker can handle 200 MB per second.
+A total of 5 brokers.
+
+The maximum throughput of the cluster is 5 * 200 MB = 1 GB per second.
+
+-------------------------------

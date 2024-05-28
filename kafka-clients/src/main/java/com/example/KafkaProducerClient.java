@@ -22,10 +22,16 @@ public class KafkaProducerClient {
                 "da", "fi", "sk", "cs", "et", "lt", "lv", "sl", "hr", "sr", "sq", "mk", "bs", "mt", "is", "ga", "cy",
                 "eu", "gl", "ast", "ca", "ht", "tl", "xh", "zu", "ny", "st", "tn", "ss", "ve", "af", "nr", "xh", "zu",
                 "ny", "st", "tn", "ss", "ve", "af", "nr", "sw", "rw", "lg", "mg", "sn", "so");
+        int partition = 0;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             String key = languages.get(i % languages.size());
             String value = "Hey Kafka!".repeat(100); // 1kb sized message
-            ProducerRecord<String, String> record = new ProducerRecord<>("topic1", key, value);
+
+            ProducerRecord<String, String> record = new ProducerRecord<>("topic1", partition, key, value);
+            partition += 3;
+            if(partition==9){
+                partition=0;
+            }
             producer.send(record, (recordMetadata, exception) -> {
                 if (exception == null) {
                     logger.info("Received new metadata \nTopic: {}\nKey: {}\nPartition: {}\nOffset: {}\nTimestamp: {}",
@@ -38,7 +44,7 @@ public class KafkaProducerClient {
                     logger.error("Error while producing: {}", exception.getMessage());
                 }
             });
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(1);
         }
         producer.close();
 
@@ -50,7 +56,7 @@ public class KafkaProducerClient {
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "producer-client-1");
 
         // List of Kafka brokers to get metadata
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.49.2:30094");
 
 //         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
 //         "strimzi.nagcloudlab.com:443");
@@ -65,10 +71,10 @@ public class KafkaProducerClient {
 //         "/home/nag/strimzi-batch2/security-1/kafka.client.keystore.jks");
 //         props.put("ssl.keystore.password", "changeit");
 
-
-        props.put("security.protocol", "SASL_PLAINTEXT");
-        props.put("sasl.mechanism","PLAIN");
-        props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";");
+//
+//        props.put("security.protocol", "SASL_PLAINTEXT");
+//        props.put("sasl.mechanism","PLAIN");
+//        props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"admin\" password=\"admin-secret\";");
 
 
 

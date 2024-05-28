@@ -34,13 +34,16 @@ public class ProducerApp {
 
         producerConfigs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         producerConfigs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-        // Setting schema auto-registration to false since we already registered the schema manually following best practice
+        // Setting schema auto-registration to false since we already registered the
+        // schema manually following best practice
         producerConfigs.put(AbstractKafkaSchemaSerDeConfig.AUTO_REGISTER_SCHEMAS, false);
 
-        // Duplication of configs loaded from confluent.properties to emphasize what's needed to use SchemaRegistry
-        producerConfigs.put("schema.registry.url", "http://localhost:8081/");
+        // Duplication of configs loaded from confluent.properties to emphasize what's
+        // needed to use SchemaRegistry
+        // producerConfigs.put("schema.registry.url", "http://localhost:8081/");
         // producerConfigs.put("basic.auth.credentials.source", "USER_INFO");
-        // producerConfigs.put("basic.auth.user.info", "<Replace this with basic.auth.user.info value from confluent.properties>");
+        // producerConfigs.put("basic.auth.user.info", "<Replace this with
+        // basic.auth.user.info value from confluent.properties>");
 
         System.out.printf("Producer now configured for using SchemaRegistry %n");
         try (final Producer<String, Purchase> producer = new KafkaProducer<>(producerConfigs)) {
@@ -55,13 +58,15 @@ public class ProducerApp {
             purchaseEvents.add(purchase);
             purchaseEvents.add(purchaseII);
 
-            purchaseEvents.forEach(event -> producer.send(new ProducerRecord<>(topic, event.getCustomerId(), event), ((metadata, exception) -> {
-                if (exception != null) {
-                    System.err.printf("Producing %s resulted in error %s %n", event, exception);
-                } else {
-                    System.out.printf("Produced record at offset %s with timestamp %d %n", metadata.offset(), metadata.timestamp());
-                }
-            })));
+            purchaseEvents.forEach(event -> producer.send(new ProducerRecord<>(topic, event.getCustomerId(), event),
+                    ((metadata, exception) -> {
+                        if (exception != null) {
+                            System.err.printf("Producing %s resulted in error %s %n", event, exception);
+                        } else {
+                            System.out.printf("Produced record at offset %s with timestamp %d %n", metadata.offset(),
+                                    metadata.timestamp());
+                        }
+                    })));
         }
     }
 
@@ -69,6 +74,7 @@ public class ProducerApp {
         purchaseBuilder.setCustomerId("vandelay")
                 .setTotalCost(random.nextDouble() * random.nextInt(100))
                 .setItem(items.get(random.nextInt(3)))
+                .setQty("10")
                 .setPurchaseDate(LocalDate.now().toString());
         return purchaseBuilder.build();
     }

@@ -23,4 +23,5 @@
 hs_err_pid*
 replay_pid*
 
-kafka_2.13-3.7.0/
+kafka_2.13-3.7.0/logs/
+confluent-7.6.1/

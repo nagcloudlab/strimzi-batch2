@@ -4,6 +4,6 @@ metadata:
   name: my-bridge
 spec:
   replicas: 1
-  bootstrapServers: my-cluster-kafka-bootstrap:9092
+  bootstrapServers: my-cluster-kafka-bootstrap:9091
   http:
-    port: 8080
+    port: 8181

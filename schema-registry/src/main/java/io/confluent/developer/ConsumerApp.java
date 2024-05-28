@@ -23,7 +23,7 @@ public class ConsumerApp {
          Properties properties = loadProperties();
          Map<String, Object> consumerConfigs = new HashMap<>();
          properties.forEach((key, value) -> consumerConfigs.put((String) key, value));
-         consumerConfigs.put(ConsumerConfig.GROUP_ID_CONFIG, "schema-registry-course-consumer");
+         consumerConfigs.put(ConsumerConfig.GROUP_ID_CONFIG, "schema-registry-course-consumer1");
          consumerConfigs.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
          consumerConfigs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -45,6 +45,7 @@ public class ConsumerApp {
                      System.out.printf("Customer: %s, ", purchase.getCustomerId());
                      System.out.printf("Total Cost: %f, ", purchase.getTotalCost());
                      System.out.printf("Item: %s } %n", purchase.getItem());
+                     System.out.println("Qty: " + purchase.getQty());
                      System.out.printf("Item: %s } %n", purchase.getPurchaseDate());
                  });
              }

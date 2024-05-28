@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>index</title>
-    <link
-      rel="stylesheet"
-      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="display-1">Kafka REST proxy example</div>
-      <hr />
-      <button id="btn1">Click</button>
-    </div>
-  </body>
-  <script>
-    document.getElementById("btn1").addEventListener("click", function (e) {
-      /*
-        curl -X POST -H "Content-Type: application/vnd.kafka.json.v2+json" \
-     --data '{"records":[{"value":{"user_action":"clicked_button"}}]}' \
-     http://localhost:8082/topics/user-actions
-        */
-      fetch("http://localhost:8082/topics/user-actions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/vnd.kafka.json.v2+json",
-        },
-        body: JSON.stringify({
-          records: [
-            {
-              value: {
-                time: new Date().toISOString(),
-                action: `clicked_button ${e.target.id}`,
-              },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>index</title>
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="display-1">Kafka REST proxy example</div>
+    <hr />
+    <button id="btn1">Click</button>
+  </div>
+</body>
+<script>
+  document.getElementById("btn1").addEventListener("click", function (e) {
+    /*
+      curl -X POST -H "Content-Type: application/vnd.kafka.json.v2+json" \
+   --data '{"records":[{"value":{"user_action":"clicked_button"}}]}' \
+   http://localhost:8082/topics/user-actions
+      */
+    fetch("http://localhost:8181/topics/user-actions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/vnd.kafka.json.v2+json",
+      },
+      body: JSON.stringify({
+        records: [
+          {
+            value: {
+              time: new Date().toISOString(),
+              action: `clicked_button ${e.target.id}`,
             },
-          ],
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
-    });
-  </script>
+          },
+        ],
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  });
+</script>
+
 </html>

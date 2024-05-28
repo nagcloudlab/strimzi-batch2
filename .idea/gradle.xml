@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-02/hello-streams" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-02/hello-streams" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-03/crypto-sentiment" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-03/crypto-sentiment" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-04/video-game-leaderboard" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-04/video-game-leaderboard" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-05/patient-monitoring" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-05/patient-monitoring" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-06/advanced-state-management" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-06/advanced-state-management" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-07/digital-twin" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-07/digital-twin" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-11/udf" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-11/udf" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-12/app" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/kafka-streams/mastering-kafka-streams-and-ksqldb/chapter-12/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/schema-registry" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/schema-registry" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

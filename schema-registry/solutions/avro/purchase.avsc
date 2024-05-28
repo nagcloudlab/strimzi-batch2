@@ -1,10 +1,41 @@
 {
-  "type":"record",
-  "namespace": "io.confluent.developer.avro",
-  "name":"Purchase",
-  "fields": [
-    {"name": "item", "type":"string"},
-    {"name": "total_cost", "type": "double" },
-    {"name": "customer_id", "type": "string"}
-  ]
+	"type": "record",
+	"name": "Purchase",
+	"namespace": "io.confluent.developer.avro",
+	"fields": [
+		{
+			"name": "item",
+			"type": {
+				"type": "string",
+				"avro.java.string": "String"
+			}
+		},
+		{
+			"name": "qty",
+			"type": {
+				"type": "string",
+				"avro.java.string": "String"
+			},
+			"default": "1"
+		},
+		{
+			"name": "total_cost",
+			"type": "double"
+		},
+		{
+			"name": "customer_id",
+			"type": {
+				"type": "string",
+				"avro.java.string": "String"
+			}
+		},
+		{
+			"name": "purchase_date",
+			"type": {
+				"type": "string",
+				"avro.java.string": "String"
+			},
+			"default": "2021-01-01"
+		}
+	]
 }
